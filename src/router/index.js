@@ -4,7 +4,11 @@ import HomeView from '../views/HomeView.vue'
 
 // Admin Views
 import AdminDashboard from "@/views/Admin/AdminDashboard";
-
+import HousesView from "@/views/Admin/HousesView";
+import UsersView from "@/views/Admin/UsersView";
+import EditHousesView from "@/views/Admin/EditHousesView";
+import LoginView from '@/views/Admin/LoginView'
+import EditionHouse from '@/views/Admin/EditionHouse'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,7 +20,44 @@ const routes = [
   {
     path: '/admin',
     name: 'admin',
-    component: AdminDashboard
+    component: AdminDashboard,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: LoginView
+      },
+      {
+        path: 'houses',
+        name: 'houses',
+        component: HousesView
+      },
+      {
+        path: 'users',
+        name: 'users',
+        component: UsersView
+      },
+      {
+        path: 'houses/add',
+        name: 'addHouse',
+        component: EditHousesView
+      },
+      {
+        path: 'houses/edit/:id',
+        name: 'editHouse',
+        component: EditHousesView
+      },
+      {
+        path: 'houses/edit',
+        name: 'addEdit',
+        component: EditionHouse
+      },
+      {
+        path: 'houses/editing/:id',
+        name: 'editingHouse',
+        component: EditionHouse
+      },
+    ]
   },
   // {
   //   path: '/about',
